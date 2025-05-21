@@ -32,24 +32,24 @@ interface TargetCardProps {
 
 function TargetCard({ icon, title, description, features }: TargetCardProps) {
   return (
-    <Card className="h-full flex flex-col">
-      <CardHeader className="text-center">
-        <div className="mx-auto p-2 rounded-full bg-blue-50 dark:bg-gray-800 mb-4">{icon}</div>
-        <CardTitle>{title}</CardTitle>
-        <CardDescription>{description}</CardDescription>
+    <Card className="h-full flex flex-col shadow-sm border-gray-200">
+      <CardHeader className="text-center pb-6">
+        <div className="mx-auto p-4 rounded-full bg-blue-50 dark:bg-gray-800 mb-6">{icon}</div>
+        <CardTitle className="text-2xl mb-2">{title}</CardTitle>
+        <CardDescription className="text-base">{description}</CardDescription>
       </CardHeader>
-      <CardContent className="flex-grow">
-        <ul className="space-y-2">
+      <CardContent className="flex-grow pb-8">
+        <ul className="space-y-4">
           {features.map((feature, index) => (
             <li key={index} className="flex items-start">
-              <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+              <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
               <span className="text-sm text-muted-foreground">{feature}</span>
             </li>
           ))}
         </ul>
       </CardContent>
-      <CardFooter>
-        <Button className="w-full bg-blue-600 hover:bg-blue-700">Learn More</Button>
+      <CardFooter className="pt-2 pb-8">
+        <Button className="w-full bg-blue-600 hover:bg-blue-700 py-6">Learn More</Button>
       </CardFooter>
     </Card>
   )
@@ -64,20 +64,20 @@ interface FeatureCardProps {
 
 function FeatureCard({ icon, title, description, features }: FeatureCardProps) {
   return (
-    <Card className="h-full flex flex-col">
-      <CardHeader>
-        <div className="flex items-center space-x-4">
-          <div className="p-2 rounded-full bg-blue-50 dark:bg-gray-800">{icon}</div>
-          <CardTitle className="text-xl">{title}</CardTitle>
+    <Card className="h-full flex flex-col shadow-sm border-gray-200">
+      <CardHeader className="pb-4">
+        <div className="flex items-center space-x-5">
+          <div className="p-3 rounded-full bg-blue-50 dark:bg-gray-800">{icon}</div>
+          <CardTitle className="text-xl font-semibold">{title}</CardTitle>
         </div>
       </CardHeader>
-      <CardContent className="flex-grow">
-        <p className="text-muted-foreground mb-4">{description}</p>
+      <CardContent className="flex-grow pt-2">
+        <p className="text-muted-foreground mb-6">{description}</p>
         {features && (
-          <ul className="space-y-2">
+          <ul className="space-y-3">
             {features.map((feature, index) => (
               <li key={index} className="flex items-start">
-                <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
                 <span className="text-sm text-muted-foreground">{feature}</span>
               </li>
             ))}
@@ -100,32 +100,32 @@ interface PricingCardProps {
 
 function PricingCard({ title, price, period, description, features, buttonText, popular = false }: PricingCardProps) {
   return (
-    <Card className={`h-full flex flex-col relative ${popular ? "border-blue-600 shadow-lg" : ""}`}>
+    <Card className={`h-full flex flex-col relative ${popular ? "border-blue-600 shadow-lg" : "shadow-sm border-gray-200"}`}>
       {popular && (
         <div className="absolute top-0 right-0 transform translate-x-2 -translate-y-2">
-          <Badge className="bg-blue-600">Most Popular</Badge>
+          <Badge className="bg-blue-600 px-3 py-1">Most Popular</Badge>
         </div>
       )}
-      <CardHeader>
-        <CardTitle>{title}</CardTitle>
-        <div className="mt-4 flex items-baseline">
-          <span className="text-3xl font-bold">{price}</span>
-          <span className="ml-1 text-muted-foreground">{period}</span>
+      <CardHeader className="pb-6">
+        <CardTitle className="text-2xl">{title}</CardTitle>
+        <div className="mt-6 flex items-baseline">
+          <span className="text-4xl font-bold">{price}</span>
+          <span className="ml-2 text-muted-foreground">{period}</span>
         </div>
-        <CardDescription className="mt-4">{description}</CardDescription>
+        <CardDescription className="mt-5 text-base">{description}</CardDescription>
       </CardHeader>
-      <CardContent className="flex-grow">
-        <ul className="space-y-2">
+      <CardContent className="flex-grow pb-8">
+        <ul className="space-y-4">
           {features.map((feature, index) => (
             <li key={index} className="flex items-start">
-              <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+              <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
               <span className="text-sm text-muted-foreground">{feature}</span>
             </li>
           ))}
         </ul>
       </CardContent>
-      <CardFooter>
-        <Button className={`w-full ${popular ? "bg-blue-600 hover:bg-blue-700" : ""}`}>{buttonText}</Button>
+      <CardFooter className="pt-2 pb-8">
+        <Button className={`w-full py-6 ${popular ? "bg-blue-600 hover:bg-blue-700" : ""}`}>{buttonText}</Button>
       </CardFooter>
     </Card>
   )
@@ -149,43 +149,43 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       {/* Header */}
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-16 items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Shield className="h-6 w-6 text-blue-600" />
+        <div className="container flex h-20 items-center justify-between px-6">
+          <div className="flex items-center gap-3">
+            <Shield className="h-7 w-7 text-blue-600" />
             <span className="text-xl font-bold">Nexus Smart DNS</span>
           </div>
-          <nav className="hidden md:flex items-center gap-6">
-            <a href="#features" className="text-sm font-medium text-muted-foreground hover:text-foreground">
+          <nav className="hidden md:flex items-center gap-8">
+            <a href="#features" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
               Features
             </a>
-            <a href="#pricing" className="text-sm font-medium text-muted-foreground hover:text-foreground">
+            <a href="#pricing" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
               Pricing
             </a>
-            <a href="#testimonials" className="text-sm font-medium text-muted-foreground hover:text-foreground">
+            <a href="#testimonials" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
               Testimonials
             </a>
-            <a href="#faq" className="text-sm font-medium text-muted-foreground hover:text-foreground">
+            <a href="#faq" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
               FAQ
             </a>
-            <a href="#partners" className="text-sm font-medium text-muted-foreground hover:text-foreground">
+            <a href="#partners" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
               Partners
             </a>
           </nav>
           <div className="flex items-center gap-4">
-            <Button variant="outline">Log In</Button>
-            <Button className="bg-blue-600 hover:bg-blue-700">Sign Up</Button>
+            <Button variant="outline" className="px-5">Log In</Button>
+            <Button className="bg-blue-600 hover:bg-blue-700 px-5">Sign Up</Button>
           </div>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-b from-blue-50 to-white">
-        <div className="container px-4 md:px-6">
-          <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
-            <div className="flex flex-col justify-center space-y-4">
-              <Badge className="w-fit bg-blue-100 text-blue-800 hover:bg-blue-100 border-none">Trusted by 10,000+ Organizations</Badge>
-              <div className="space-y-2">
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">
+      <section className="w-full py-16 md:py-28 lg:py-36 bg-gradient-to-b from-blue-50 to-white">
+        <div className="container px-6 md:px-8">
+          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
+            <div className="flex flex-col justify-center space-y-6">
+              <Badge className="w-fit bg-blue-100 text-blue-800 hover:bg-blue-100 border-none px-3 py-1 text-sm">Trusted by 10,000+ Organizations</Badge>
+              <div className="space-y-4">
+                <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-6xl">
                   Nexus Smart DNS
                 </h1>
                 <p className="text-xl text-muted-foreground">
@@ -195,33 +195,33 @@ export default function Home() {
               <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                 Protect your network. Empower learning. Block distractions. Join 50,000+ users worldwide.
               </p>
-              <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
+              <div className="flex flex-col gap-3 sm:flex-row pt-2">
+                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 px-8">
                   Start Free Trial
                 </Button>
-                <Button size="lg" variant="outline">
+                <Button size="lg" variant="outline" className="px-8">
                   Watch Demo
                 </Button>
               </div>
-              <div className="flex items-center space-x-4 text-sm text-muted-foreground">
+              <div className="flex items-center space-x-6 text-sm text-muted-foreground pt-2">
                 <div className="flex items-center">
-                  <CheckCircle className="mr-1 h-4 w-4 text-green-500" />
+                  <CheckCircle className="mr-2 h-5 w-5 text-green-500" />
                   <span>No credit card required</span>
                 </div>
                 <div className="flex items-center">
-                  <CheckCircle className="mr-1 h-4 w-4 text-green-500" />
+                  <CheckCircle className="mr-2 h-5 w-5 text-green-500" />
                   <span>14-day free trial</span>
                 </div>
               </div>
             </div>
             <div className="flex justify-center">
-              <div className="relative w-full max-w-[500px] aspect-video rounded-xl overflow-hidden shadow-2xl">
+              <div className="relative w-full max-w-[540px] aspect-video rounded-xl overflow-hidden shadow-2xl">
                 <Image
                   src="/placeholder.svg"
                   alt="Nexus Smart DNS Dashboard"
                   className="object-cover"
                   fill
-                  sizes="(max-width: 768px) 100vw, 500px"
+                  sizes="(max-width: 768px) 100vw, 540px"
                   priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/20 to-transparent"></div>
@@ -230,35 +230,35 @@ export default function Home() {
           </div>
           
           {/* Stats Bar */}
-          <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 text-center">
-            <div className="bg-white p-4 rounded-lg shadow-sm">
+          <div className="mt-24 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center">
+            <div className="bg-white p-6 rounded-lg shadow-sm">
               <p className="text-3xl font-bold text-blue-600">50,000+</p>
-              <p className="text-sm text-muted-foreground">Active Users</p>
+              <p className="text-sm text-muted-foreground mt-2">Active Users</p>
             </div>
-            <div className="bg-white p-4 rounded-lg shadow-sm">
+            <div className="bg-white p-6 rounded-lg shadow-sm">
               <p className="text-3xl font-bold text-blue-600">99.9%</p>
-              <p className="text-sm text-muted-foreground">Uptime</p>
+              <p className="text-sm text-muted-foreground mt-2">Uptime</p>
             </div>
-            <div className="bg-white p-4 rounded-lg shadow-sm">
+            <div className="bg-white p-6 rounded-lg shadow-sm">
               <p className="text-3xl font-bold text-blue-600">5,000+</p>
-              <p className="text-sm text-muted-foreground">Schools Protected</p>
+              <p className="text-sm text-muted-foreground mt-2">Schools Protected</p>
             </div>
-            <div className="bg-white p-4 rounded-lg shadow-sm">
+            <div className="bg-white p-6 rounded-lg shadow-sm">
               <p className="text-3xl font-bold text-blue-600">10M+</p>
-              <p className="text-sm text-muted-foreground">Threats Blocked Daily</p>
+              <p className="text-sm text-muted-foreground mt-2">Threats Blocked Daily</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Trusted By Section */}
-      <section id="partners" className="w-full py-8 md:py-12 bg-white border-y">
-        <div className="container px-4 md:px-6">
-          <h2 className="text-center text-lg font-medium text-muted-foreground mb-8">Trusted by leading organizations worldwide</h2>
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 opacity-70">
-            {['Harvard University', 'Stanford Schools', 'NYC Public Library', 'Boston Children\'s Hospital', 'Microsoft Education', 'Google for Education'].map((partner, index) => (
+      <section id="partners" className="w-full py-14 md:py-16 bg-white border-y">
+        <div className="container px-6 md:px-8">
+          <h2 className="text-center text-lg font-medium text-muted-foreground mb-10">Trusted by leading organizations worldwide</h2>
+          <div className="flex flex-wrap justify-center items-center gap-10 md:gap-16 opacity-80">
+            {['Harvard University', 'Stanford Schools', 'NYC Public Library', 'Boston Children\'s Hospital', 'Microsoft Education'].map((partner, index) => (
               <div key={index} className="flex items-center">
-                <div className="w-8 h-8 mr-2 bg-gray-200 rounded-full"></div>
+                <div className="w-10 h-10 mr-3 bg-gray-200 rounded-full flex-shrink-0"></div>
                 <span className="font-medium">{partner}</span>
               </div>
             ))}
@@ -267,22 +267,22 @@ export default function Home() {
       </section>
 
       {/* Target Audience Section */}
-      <section id="audience" className="w-full py-12 md:py-24 lg:py-32 bg-white">
-        <div className="container px-4 md:px-6">
-          <div className="flex flex-col items-center justify-center space-y-4 text-center">
-            <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-100 border-none">For Everyone</Badge>
-            <div className="space-y-2">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+      <section id="audience" className="w-full py-16 md:py-28 lg:py-36 bg-white">
+        <div className="container px-6 md:px-8">
+          <div className="flex flex-col items-center justify-center space-y-6 text-center">
+            <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-100 border-none px-3 py-1 text-sm">For Everyone</Badge>
+            <div className="space-y-4">
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
                 Built for Families, Schools & Classrooms
               </h2>
-              <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+              <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-xl/relaxed">
                 Create safe internet environments for everyone who matters.
               </p>
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-16">
             <TargetCard
-              icon={<HomeIcon className="w-10 h-10 text-blue-500" />}
+              icon={<HomeIcon className="w-12 h-12 text-blue-500" />}
               title="Families"
               description="Restrict harmful content and ads across all home devices. Keep your children safe online."
               features={[
@@ -294,7 +294,7 @@ export default function Home() {
               ]}
             />
             <TargetCard
-              icon={<School className="w-10 h-10 text-green-500" />}
+              icon={<School className="w-12 h-12 text-green-500" />}
               title="Schools & Colleges"
               description="Enforce access policies and reduce distractions. Create focused learning environments."
               features={[
@@ -306,7 +306,7 @@ export default function Home() {
               ]}
             />
             <TargetCard
-              icon={<Server className="w-10 h-10 text-purple-500" />}
+              icon={<Server className="w-12 h-12 text-purple-500" />}
               title="Libraries & Labs"
               description="Ensure internet is used for learning only. Manage public access responsibly."
               features={[
@@ -322,31 +322,31 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="w-full py-12 md:py-24 lg:py-32 bg-gray-50">
-        <div className="container px-4 md:px-6">
-          <div className="flex flex-col items-center justify-center space-y-4 text-center">
-            <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-100 border-none">Powerful Features</Badge>
-            <div className="space-y-2">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+      <section id="features" className="w-full py-16 md:py-28 lg:py-36 bg-gray-50">
+        <div className="container px-6 md:px-8">
+          <div className="flex flex-col items-center justify-center space-y-6 text-center">
+            <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-100 border-none px-3 py-1 text-sm">Powerful Features</Badge>
+            <div className="space-y-4">
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
                 Smart Blocking & Filtering
               </h2>
-              <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+              <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-xl/relaxed">
                 Powerful tools to create a safer, distraction-free digital environment.
               </p>
             </div>
           </div>
           
-          <Tabs defaultValue="blocking" className="mt-12">
-            <TabsList className="grid w-full grid-cols-4">
-              <TabsTrigger value="blocking">Content Blocking</TabsTrigger>
-              <TabsTrigger value="groups">User Groups</TabsTrigger>
-              <TabsTrigger value="dns">DNS Features</TabsTrigger>
-              <TabsTrigger value="performance">Performance</TabsTrigger>
+          <Tabs defaultValue="blocking" className="mt-16">
+            <TabsList className="grid w-full grid-cols-4 h-14">
+              <TabsTrigger value="blocking" className="text-base">Content Blocking</TabsTrigger>
+              <TabsTrigger value="groups" className="text-base">User Groups</TabsTrigger>
+              <TabsTrigger value="dns" className="text-base">DNS Features</TabsTrigger>
+              <TabsTrigger value="performance" className="text-base">Performance</TabsTrigger>
             </TabsList>
-            <TabsContent value="blocking" className="mt-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <TabsContent value="blocking" className="mt-10">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                 <FeatureCard
-                  icon={<Shield className="w-6 h-6 text-blue-500" />}
+                  icon={<Shield className="w-8 h-8 text-blue-500" />}
                   title="Advanced Content Filtering"
                   description="Block ads, malware, and adult content using trusted external deny lists. Keep unwanted content away."
                   features={[
@@ -358,7 +358,7 @@ export default function Home() {
                   ]}
                 />
                 <FeatureCard
-                  icon={<Layers className="w-6 h-6 text-blue-500" />}
+                  icon={<Layers className="w-8 h-8 text-blue-500" />}
                   title="Multi-Layer Protection"
                   description="Comprehensive protection at DNS, IP, and content levels for maximum security."
                   features={[
@@ -370,7 +370,7 @@ export default function Home() {
                   ]}
                 />
                 <FeatureCard
-                  icon={<Clock className="w-6 h-6 text-blue-500" />}
+                  icon={<Clock className="w-8 h-8 text-blue-500" />}
                   title="Time-Based Rules"
                   description="Set different filtering rules based on time of day, day of week, or custom schedules."
                   features={[
@@ -382,7 +382,7 @@ export default function Home() {
                   ]}
                 />
                 <FeatureCard
-                  icon={<FileText className="w-6 h-6 text-blue-500" />}
+                  icon={<FileText className="w-8 h-8 text-blue-500" />}
                   title="Detailed Reporting"
                   description="Comprehensive logs and reports of all network activity and blocked content."
                   features={[
@@ -484,21 +484,21 @@ export default function Home() {
       </section>
 
       {/* Pricing Section */}
-      <section id="pricing" className="w-full py-12 md:py-24 lg:py-32 bg-white">
-        <div className="container px-4 md:px-6">
-          <div className="flex flex-col items-center justify-center space-y-4 text-center">
-            <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-100 border-none">Simple Pricing</Badge>
-            <div className="space-y-2">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+      <section id="pricing" className="w-full py-16 md:py-20 lg:py-20 bg-white">
+        <div className="container px-6 md:px-8">
+          <div className="flex flex-col items-center justify-center space-y-6 text-center">
+            <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-100 border-none px-3 py-1 text-sm">Simple Pricing</Badge>
+            <div className="space-y-4">
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
                 Choose Your Plan
               </h2>
-              <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+              <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-xl/relaxed">
                 Flexible options for homes, schools, and enterprises of all sizes.
               </p>
             </div>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-16">
             <PricingCard
               title="Family"
               price="$4.99"
@@ -554,7 +554,7 @@ export default function Home() {
             />
           </div>
           
-          <div className="mt-12 text-center">
+          <div className="mt-16 text-center">
             <p className="text-muted-foreground">All plans include a 14-day free trial. No credit card required.</p>
           </div>
         </div>
@@ -618,18 +618,6 @@ export default function Home() {
       <section id="advanced" className="w-full py-12 md:py-24 lg:py-32 bg-white">
         <div className="container px-4 md:px-6">
           <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
-            <div className="flex justify-center">
-              <div className="relative w-full max-w-[500px] aspect-square rounded-xl overflow-hidden shadow-lg">
-                <Image
-                  src="/placeholder.svg"
-                  alt="Advanced DNS Configuration"
-                  className="object-cover"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 500px"
-                />
-                <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/20 to-transparent"></div>
-              </div>
-            </div>
             <div className="flex flex-col justify-center space-y-4">
               <Badge className="w-fit bg-blue-100 text-blue-800 hover:bg-blue-100 border-none">Technical Excellence</Badge>
               <div className="space-y-2">
@@ -662,6 +650,18 @@ export default function Home() {
                 <Button className="bg-blue-600 hover:bg-blue-700">View Technical Docs</Button>
               </div>
             </div>
+            <div className="flex justify-center order-first lg:order-last">
+              <div className="relative w-full max-w-[500px] aspect-square rounded-xl overflow-hidden shadow-lg">
+                <Image
+                  src="/placeholder.svg"
+                  alt="Advanced DNS Configuration"
+                  className="object-cover"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 500px"
+                />
+                <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/20 to-transparent"></div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -670,6 +670,18 @@ export default function Home() {
       <section id="security" className="w-full py-12 md:py-24 lg:py-32 bg-blue-50">
         <div className="container px-4 md:px-6">
           <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
+            <div className="flex justify-center order-last lg:order-first">
+              <div className="relative w-full max-w-[500px] aspect-square rounded-xl overflow-hidden shadow-lg">
+                <Image
+                  src="/placeholder.svg"
+                  alt="Security and Privacy"
+                  className="object-cover"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 500px"
+                />
+                <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/20 to-transparent"></div>
+              </div>
+            </div>
             <div className="flex flex-col justify-center space-y-4">
               <Badge className="w-fit bg-blue-100 text-blue-800 hover:bg-blue-100 border-none">Privacy First</Badge>
               <div className="space-y-2">
@@ -702,38 +714,26 @@ export default function Home() {
                 <Button className="bg-blue-600 hover:bg-blue-700">Security Whitepaper</Button>
               </div>
             </div>
-            <div className="flex justify-center">
-              <div className="relative w-full max-w-[500px] aspect-square rounded-xl overflow-hidden shadow-lg">
-                <Image
-                  src="/placeholder.svg"
-                  alt="Security and Privacy"
-                  className="object-cover"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 500px"
-                />
-                <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/20 to-transparent"></div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
 
       {/* Testimonials Section */}
-      <section id="testimonials" className="w-full py-12 md:py-24 lg:py-32 bg-white">
-        <div className="container px-4 md:px-6">
-          <div className="flex flex-col items-center justify-center space-y-4 text-center">
-            <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-100 border-none">Customer Stories</Badge>
-            <div className="space-y-2">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+      <section id="testimonials" className="w-full py-16 md:py-28 lg:py-36 bg-white">
+        <div className="container px-6 md:px-8">
+          <div className="flex flex-col items-center justify-center space-y-6 text-center">
+            <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-100 border-none px-3 py-1 text-sm">Customer Stories</Badge>
+            <div className="space-y-4">
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
                 What Our Customers Say
               </h2>
-              <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+              <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-xl/relaxed">
                 Join thousands of satisfied users worldwide
               </p>
             </div>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-16">
                           {[
                 {
                   name: "Sarah Johnson",
@@ -814,22 +814,22 @@ export default function Home() {
             ))}
           </div>
           
-          <div className="mt-12 text-center">
-            <Button variant="outline">View All 200+ Reviews</Button>
+          <div className="mt-16 text-center">
+            <Button variant="outline" className="px-8 py-6 text-base">View All 200+ Reviews</Button>
           </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="w-full py-12 md:py-24 lg:py-32 bg-gray-50">
-        <div className="container px-4 md:px-6">
-          <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-            <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-100 border-none">FAQ</Badge>
-            <div className="space-y-2">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">
+      <section id="faq" className="w-full py-16 md:py-28 lg:py-36 bg-gray-50">
+        <div className="container px-6 md:px-8">
+          <div className="flex flex-col items-center justify-center space-y-6 text-center mb-16">
+            <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-100 border-none px-3 py-1 text-sm">FAQ</Badge>
+            <div className="space-y-4">
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
                 Frequently Asked Questions
               </h2>
-              <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+              <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-xl/relaxed">
                 Everything you need to know about Nexus Smart DNS
               </p>
             </div>
@@ -879,10 +879,10 @@ export default function Home() {
                   answer: "Support options vary by plan. Family plans include email support with 24-hour response time. Education plans include priority email support with 8-hour response time and access to our knowledge base and community forums. Enterprise plans include 24/7 phone support, a dedicated account manager, and SLA guarantees. All customers receive regular software updates and access to our comprehensive documentation."
                 }
               ].map((faq, index) => (
-                <AccordionItem key={index} value={`item-${index}`}>
-                  <AccordionTrigger className="text-left">{faq.question}</AccordionTrigger>
-                  <AccordionContent>
-                    <p className="text-muted-foreground">{faq.answer}</p>
+                <AccordionItem key={index} value={`item-${index}`} className="border-b py-2">
+                  <AccordionTrigger className="text-left text-base font-medium py-4">{faq.question}</AccordionTrigger>
+                  <AccordionContent className="pt-2 pb-4">
+                    <p className="text-muted-foreground leading-relaxed">{faq.answer}</p>
                   </AccordionContent>
                 </AccordionItem>
               ))}
@@ -897,15 +897,15 @@ export default function Home() {
       </section>
 
       {/* Technical Specs */}
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-white">
-        <div className="container px-4 md:px-6">
-          <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-            <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-100 border-none">Technical Details</Badge>
-            <div className="space-y-2">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">
+      <section className="w-full py-16 md:py-28 lg:py-36 bg-white">
+        <div className="container px-6 md:px-8">
+          <div className="flex flex-col items-center justify-center space-y-6 text-center mb-16">
+            <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-100 border-none px-3 py-1 text-sm">Technical Details</Badge>
+            <div className="space-y-4">
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
                 Technical Specifications
               </h2>
-              <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+              <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-xl/relaxed">
                 Built for performance, reliability, and security
               </p>
             </div>
@@ -913,10 +913,10 @@ export default function Home() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div>
-              <h3 className="text-xl font-bold mb-4">System Requirements</h3>
-              <ul className="space-y-2 text-muted-foreground">
+              <h3 className="text-xl font-bold mb-6">System Requirements</h3>
+              <ul className="space-y-4 text-muted-foreground">
                 <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                  <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
                   <span><span className="font-medium text-foreground">CPU:</span> 1+ GHz processor (2+ GHz recommended for 1000+ devices)</span>
                 </li>
                 <li className="flex items-start">
@@ -1013,41 +1013,41 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-blue-600 text-white">
-        <div className="container px-4 md:px-6">
-          <div className="flex flex-col items-center justify-center space-y-4 text-center">
-            <Badge className="bg-white/20 text-white hover:bg-white/20 border-none">Get Started Today</Badge>
-            <div className="space-y-2">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+      <section className="w-full py-20 md:py-32 lg:py-40 bg-blue-600 text-white">
+        <div className="container px-6 md:px-8">
+          <div className="flex flex-col items-center justify-center space-y-6 text-center">
+            <Badge className="bg-white/20 text-white hover:bg-white/20 border-none px-3 py-1 text-sm">Get Started Today</Badge>
+            <div className="space-y-4">
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
                 Ready to Create a Safer Internet?
               </h2>
-              <p className="max-w-[900px] text-blue-100 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+              <p className="max-w-[900px] text-blue-100 md:text-xl/relaxed lg:text-xl/relaxed">
                 Join thousands of families and institutions already using Nexus Smart DNS.
               </p>
             </div>
-            <div className="flex flex-col gap-2 min-[400px]:flex-row">
-              <Button size="lg" className="bg-white text-blue-600 hover:bg-blue-50">
+            <div className="flex flex-col gap-3 sm:flex-row pt-4">
+              <Button size="lg" className="bg-white text-blue-600 hover:bg-blue-50 px-8 py-6 text-base">
                 Start Free Trial
               </Button>
-              <Button size="lg" variant="outline" className="text-white border-white hover:bg-blue-700">
+              <Button size="lg" variant="outline" className="text-white border-white hover:bg-blue-700 px-8 py-6 text-base">
                 Schedule Demo
               </Button>
             </div>
-            <p className="text-sm text-blue-100">No credit card required. 14-day free trial.</p>
+            <p className="text-sm text-blue-100 pt-4">No credit card required. 14-day free trial.</p>
           </div>
         </div>
       </section>
 
       {/* Footer */}
       <footer className="w-full border-t bg-background">
-        <div className="container px-4 py-12 md:py-16 lg:py-20">
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
+        <div className="container px-6 md:px-8 py-16 md:py-20 lg:py-24">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-10">
             <div className="col-span-2 lg:col-span-1">
-              <div className="flex items-center gap-2 mb-4">
-                <Shield className="h-6 w-6 text-blue-600" />
+              <div className="flex items-center gap-3 mb-6">
+                <Shield className="h-7 w-7 text-blue-600" />
                 <span className="text-xl font-bold">Nexus Smart DNS</span>
               </div>
-              <p className="text-sm text-muted-foreground mb-4">
+              <p className="text-sm text-muted-foreground mb-6 leading-relaxed">
                 Safe. Controlled. Blazing Fast DNS for Families & Educational Institutions.
               </p>
               <div className="flex space-x-4">
@@ -1079,13 +1079,13 @@ export default function Home() {
             </div>
             
             <div>
-              <h3 className="font-medium mb-4">Product</h3>
-              <ul className="space-y-2 text-sm">
-                <li><a href="#features" className="text-muted-foreground hover:text-foreground">Features</a></li>
-                <li><a href="#pricing" className="text-muted-foreground hover:text-foreground">Pricing</a></li>
-                <li><a href="#" className="text-muted-foreground hover:text-foreground">Changelog</a></li>
-                <li><a href="#" className="text-muted-foreground hover:text-foreground">Roadmap</a></li>
-                <li><a href="#" className="text-muted-foreground hover:text-foreground">Beta Program</a></li>
+              <h3 className="font-medium mb-6 text-base">Product</h3>
+              <ul className="space-y-3 text-sm">
+                <li><a href="#features" className="text-muted-foreground hover:text-foreground transition-colors">Features</a></li>
+                <li><a href="#pricing" className="text-muted-foreground hover:text-foreground transition-colors">Pricing</a></li>
+                <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Changelog</a></li>
+                <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Roadmap</a></li>
+                <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Beta Program</a></li>
               </ul>
             </div>
             
@@ -1123,11 +1123,11 @@ export default function Home() {
             </div>
           </div>
           
-          <div className="mt-12 pt-8 border-t flex flex-col md:flex-row justify-between items-center">
+          <div className="mt-16 pt-10 border-t flex flex-col md:flex-row justify-between items-center">
             <p className="text-center text-sm text-muted-foreground md:text-left">
               © 2025 Nexus Smart DNS. All rights reserved.
             </p>
-            <div className="mt-4 md:mt-0">
+            <div className="mt-6 md:mt-0">
               <p className="text-sm text-muted-foreground">
                 Made with ❤️ for safer internet
               </p>
